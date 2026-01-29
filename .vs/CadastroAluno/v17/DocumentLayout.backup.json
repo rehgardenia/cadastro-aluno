@@ -1,0 +1,87 @@
+{
+  "Version": 1,
+  "WorkspaceRootPath": "C:\\Users\\aluno\\Downloads\\pjtCadastroAluno\\CadastroAluno\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{F2F8D7A1-024B-4D0C-9237-0BA9EBE56989}|CadastroAluno.csproj|c:\\users\\aluno\\downloads\\pjtcadastroaluno\\cadastroaluno\\cadastro.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{F2F8D7A1-024B-4D0C-9237-0BA9EBE56989}|CadastroAluno.csproj|solutionrelative:cadastro.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{F2F8D7A1-024B-4D0C-9237-0BA9EBE56989}|CadastroAluno.csproj|c:\\users\\aluno\\downloads\\pjtcadastroaluno\\cadastroaluno\\aluno.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{F2F8D7A1-024B-4D0C-9237-0BA9EBE56989}|CadastroAluno.csproj|solutionrelative:aluno.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{F2F8D7A1-024B-4D0C-9237-0BA9EBE56989}|CadastroAluno.csproj|c:\\users\\aluno\\downloads\\pjtcadastroaluno\\cadastroaluno\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{F2F8D7A1-024B-4D0C-9237-0BA9EBE56989}|CadastroAluno.csproj|solutionrelative:program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{F2F8D7A1-024B-4D0C-9237-0BA9EBE56989}|CadastroAluno.csproj|C:\\Users\\aluno\\Downloads\\pjtCadastroAluno\\CadastroAluno\\cadastro.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
+      "RelativeMoniker": "D:0:0:{F2F8D7A1-024B-4D0C-9237-0BA9EBE56989}|CadastroAluno.csproj|solutionrelative:cadastro.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
+    }
+  ],
+  "DocumentGroupContainers": [
+    {
+      "Orientation": 0,
+      "VerticalTabListWidth": 256,
+      "DocumentGroups": [
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": 0,
+          "Children": [
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "Cadastro.cs",
+              "DocumentMoniker": "C:\\Users\\aluno\\Downloads\\pjtCadastroAluno\\CadastroAluno\\Cadastro.cs",
+              "RelativeDocumentMoniker": "Cadastro.cs",
+              "ToolTip": "C:\\Users\\aluno\\Downloads\\pjtCadastroAluno\\CadastroAluno\\Cadastro.cs",
+              "RelativeToolTip": "Cadastro.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAEgAAAAkAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-11-13T00:20:41.103Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "Aluno.cs",
+              "DocumentMoniker": "C:\\Users\\aluno\\Downloads\\pjtCadastroAluno\\CadastroAluno\\Aluno.cs",
+              "RelativeDocumentMoniker": "Aluno.cs",
+              "ToolTip": "C:\\Users\\aluno\\Downloads\\pjtCadastroAluno\\CadastroAluno\\Aluno.cs",
+              "RelativeToolTip": "Aluno.cs",
+              "ViewState": "AgIAALcAAAAAAAAAAAAqwNAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-11-12T23:55:59.599Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "Program.cs",
+              "DocumentMoniker": "C:\\Users\\aluno\\Downloads\\pjtCadastroAluno\\CadastroAluno\\Program.cs",
+              "RelativeDocumentMoniker": "Program.cs",
+              "ToolTip": "C:\\Users\\aluno\\Downloads\\pjtCadastroAluno\\CadastroAluno\\Program.cs",
+              "RelativeToolTip": "Program.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA0AAAAoAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-11-12T23:02:21.942Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "Cadastro.cs [Projeto]",
+              "DocumentMoniker": "C:\\Users\\aluno\\Downloads\\pjtCadastroAluno\\CadastroAluno\\Cadastro.cs",
+              "RelativeDocumentMoniker": "Cadastro.cs",
+              "ToolTip": "C:\\Users\\aluno\\Downloads\\pjtCadastroAluno\\CadastroAluno\\Cadastro.cs [Projeto]",
+              "RelativeToolTip": "Cadastro.cs [Projeto]",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-11-12T22:39:50.21Z",
+              "EditorCaption": " [Projeto]"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
