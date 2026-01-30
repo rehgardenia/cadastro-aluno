@@ -5,14 +5,13 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Data;
 using System.Data.SqlClient;
+using MySql.Data.MySqlClient;
 
 
 namespace CadastroAluno
 {
     internal class Aluno
     {
-
-
         private string? prontuario;
         private string? nome;
         private string? cpf;
@@ -20,7 +19,6 @@ namespace CadastroAluno
         private string? email;
 
         // GET E SET 
-
         public string Prontuario
         {
             get { return prontuario!; }
@@ -40,7 +38,6 @@ namespace CadastroAluno
                 nome = value;
             }
         }
-
         public string Cpf
         {
             get { return cpf!; }
@@ -50,10 +47,8 @@ namespace CadastroAluno
                     throw new Exception("Cpf Inválido! " + value);
                 else
                     cpf = value;
-
             }
         }
-
         public string Rg
         {
             get { return rg!; }
@@ -65,7 +60,6 @@ namespace CadastroAluno
                     rg = value;
             }
         }
-
         public string Email
         {
             get { return email!; }
@@ -73,54 +67,59 @@ namespace CadastroAluno
 
         }
 
-        // metodo incluirAluno
+        // INSERT - Inclusão do Aluno no Banco de Dados
 
         public void Incluir()
         {
-            SqlConnection conexao = new SqlConnection();
+            MySqlConnection conexao = null;
             try
             {
-                conexao.ConnectionString = "Data Source=localhost;Initial Catalog=dbAcademico;Integrated Security=True;";
-                SqlCommand comando = new SqlCommand();
-                comando.Connection = conexao;
-                comando.CommandType = CommandType.Text;
-                comando.CommandText = $"INSERT INTO Alunos(Prontuario, Nome, Email, CPF, RG) VALUES (@Prontuario, @Nome, @Email, @CPF, @RG) ";
-                comando.Parameters.AddWithValue("@Prontuario", prontuario);
-                comando.Parameters.AddWithValue("@Nome", nome);
-                comando.Parameters.AddWithValue("@Email", email);
-                comando.Parameters.AddWithValue("@RG", rg);
-                comando.Parameters.AddWithValue("@CPF", cpf);
+                conexao = new MySqlConnection(Conexao.ConnectionString);
                 conexao.Open();
-                comando.ExecuteScalar();
+                string query = $"INSERT INTO Alunos(Prontuario, Nome, Email, CPF, RG) VALUES (@Prontuario, @Nome, @Email, @CPF, @RG) ";
+                MySqlCommand cmd = new(query, conexao);
+
+                cmd.Parameters.AddWithValue("@Prontuario", prontuario);
+                cmd.Parameters.AddWithValue("@Nome", nome);
+                cmd.Parameters.AddWithValue("@Email", email);
+                cmd.Parameters.AddWithValue("@RG", rg);
+                cmd.Parameters.AddWithValue("@CPF", cpf);
+
+                cmd.ExecuteNonQuery();
 
                 MessageBox.Show("Aluno incluido com sucessso!", "SUCESSO", MessageBoxButtons.OK, MessageBoxIcon.Information);
-
             }
+            catch( MySqlException ex)
+            {
+                throw new Exception("Erro ao inserir dado no MySql: " + ex.Message);
+            }
+
             catch (Exception ex) {
 
-                throw new Exception("Erro no Banco de dados" + ex);
+                throw new Exception("Erro: " + ex.Message);
             }
             finally
             {
-                conexao.Close();
+                if (conexao != null && conexao.State == System.Data.ConnectionState.Open)
+                    conexao.Close();
             }
 
         }
         public bool Consultar()
         {
-
-            SqlConnection conexao = new SqlConnection();
+            MySqlConnection conexao = null;
             try
             {
-                conexao.ConnectionString = "Data Source=localhost;Initial Catalog=dbAcademico;Integrated Security=True;";
-                SqlCommand comando = new SqlCommand();
-                comando.Connection = conexao;
-                comando.CommandType = CommandType.Text;
-                comando.CommandText = $"SELECT Prontuario, Nome, Email, CPF, RG FROM Alunos WHERE Prontuario = @Prontuario";
-                comando.Parameters.AddWithValue("@Prontuario", prontuario);
+                conexao = new (Conexao.ConnectionString);
                 conexao.Open();
-                SqlDataReader dr = comando.ExecuteReader();
-                if (!dr.Read()) {
+
+                string query = $"SELECT Prontuario, Nome, Email, CPF, RG FROM Alunos WHERE Prontuario = @Prontuario";
+                MySqlCommand cmd = new (query, conexao);
+                cmd.Parameters.AddWithValue("@Prontuario", prontuario);
+               
+                MySqlDataReader dr = cmd.ExecuteReader();
+                if (!dr.Read())
+                {
                     return false;
                 }
                 // Prencher as localizações
@@ -130,6 +129,10 @@ namespace CadastroAluno
                 this.email = dr["Email"].ToString();
                 return true;
             }
+            catch (MySqlException ex)
+            {
+                throw new Exception("Erro ao consultar no MySql: " + ex.Message);
+            }
             catch (Exception ex)
             {
 
@@ -137,38 +140,34 @@ namespace CadastroAluno
             }
             finally
             {
-                conexao.Close();
+                if (conexao != null && conexao.State == System.Data.ConnectionState.Open)
+                    conexao.Close();
             }
 
         }
         public bool Editar()
         {
-            SqlConnection conexao = new SqlConnection();
+            MySqlConnection conexao = null;
             try
             {
-                conexao.ConnectionString = "Data Source=localhost;Initial Catalog=dbAcademico;Integrated Security=True;";
-                SqlCommand comando = new SqlCommand();
-                comando.Connection = conexao;
-                comando.CommandType = CommandType.Text;
-                comando.CommandText = $"UPDATE Alunos SET Prontuario=@Prontuario, Nome=@Nome, Email=@Email, CPF=@CPF, RG=@RG WHERE Prontuario=@Prontuario;";
+                conexao = new (Conexao.ConnectionString);
+                conexao.Open();
+                string query = $"UPDATE Alunos SET Prontuario=@Prontuario, Nome=@Nome, Email=@Email, CPF=@CPF, RG=@RG WHERE Prontuario=@Prontuario;";
+                MySqlCommand comando = new (query, conexao);
                 comando.Parameters.AddWithValue("@Prontuario", prontuario);
                 comando.Parameters.AddWithValue("@Nome", nome);
                 comando.Parameters.AddWithValue("@Email", email);
                 comando.Parameters.AddWithValue("@RG", rg);
                 comando.Parameters.AddWithValue("@CPF", cpf);
-                
-                conexao.Open();
-
+               
                 int linhasAfetadas = comando.ExecuteNonQuery();
 
-                if (linhasAfetadas > 0)
-                {
-                    return true;
-                }
-                else
-                {
-                    return false;
-                }
+                return linhasAfetadas > 0 ? true : false;
+
+            }
+            catch (MySqlException ex)
+            {
+                throw new Exception("Erro ao atualizar no MySql: " + ex.Message);
             }
             catch (Exception ex)
             {
@@ -177,32 +176,31 @@ namespace CadastroAluno
             }
             finally
             {
-                conexao.Close();
+                if (conexao != null && conexao.State == System.Data.ConnectionState.Open)
+                    conexao.Close();
             }
         }
         public bool Exclusao()
         {
-            SqlConnection conexao = new SqlConnection();
+            MySqlConnection conexao = null;
             try
             {
-                conexao.ConnectionString = "Data Source=localhost;Initial Catalog=dbAcademico;Integrated Security=True;";
-                SqlCommand comando = new SqlCommand();
-                comando.Connection = conexao;
-                comando.CommandType = CommandType.Text;
-                comando.CommandText = $"DELETE FROM Alunos WHERE Prontuario=@prontuario";
-                comando.Parameters.AddWithValue("@Prontuario", prontuario);
+                conexao = new (Conexao.ConnectionString);
                 conexao.Open();
+                
+                string query = $"DELETE FROM Alunos WHERE Prontuario=@Prontuario";
+                MySqlCommand comando = new (query, conexao);
+                comando.Parameters.AddWithValue("@Prontuario", prontuario);
+
                 int linhasAfetadas = comando.ExecuteNonQuery();
 
                 // Verificando se alguma linha foi excluída
-                if (linhasAfetadas > 0)
-                {
-                    return true;
-                }
-                else
-                {
-                    return false;
-                }
+                return linhasAfetadas > 0 ? true : false;
+              
+            }
+            catch (MySqlException ex)
+            {
+                throw new Exception("Erro ao deletar no MySql: " + ex.Message);
             }
             catch (Exception ex)
             {
@@ -211,7 +209,8 @@ namespace CadastroAluno
             }
             finally
             {
-                conexao.Close();
+                if (conexao != null && conexao.State == System.Data.ConnectionState.Open)
+                    conexao.Close();
             }
         } 
 

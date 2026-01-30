@@ -1,3 +1,5 @@
+
+
 namespace CadastroAluno
 {
     internal static class Program
@@ -12,6 +14,7 @@ namespace CadastroAluno
             // see https://aka.ms/applicationconfiguration.
             ApplicationConfiguration.Initialize();
             Application.Run(new Cadastro());
+      
         }
     }
 }

@@ -11,7 +11,7 @@ namespace CadastroAluno
         {
             try
             {
-                Aluno a = new Aluno();
+                Aluno a = new ();
                 a.Rg = txtRG.Text;
                 a.Nome = txtNome.Text;
                 a.Cpf = txtCPF.Text;
@@ -41,7 +41,7 @@ namespace CadastroAluno
         {
             try
             {
-                Aluno a = new Aluno();
+                Aluno a = new ();
                 a.Prontuario = txtLocalizar.Text;
 
                 if (a.Consultar())
@@ -68,7 +68,7 @@ namespace CadastroAluno
         {
             try
             {
-                Aluno a = new Aluno();
+                Aluno a = new ();
                 a.Prontuario = txtProntuario.Text;
                 a.Cpf = txtCPF.Text;
                 a.Rg = txtRG.Text;
@@ -90,7 +90,8 @@ namespace CadastroAluno
                 }
 
             }
-            catch (Exception ex) {
+            catch (Exception ex)
+            {
                 MessageBox.Show("Erro " + ex.Message, "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
@@ -99,7 +100,7 @@ namespace CadastroAluno
         {
             try
             {
-                Aluno a = new Aluno();
+                Aluno a = new ();
                 a.Prontuario = txtLocalizar.Text;
 
                 if (a.Exclusao())
@@ -110,9 +111,10 @@ namespace CadastroAluno
                 {
                     MessageBox.Show("Erro ao excluir aluno!");
                 }
-               
+
             }
-            catch(Exception ex){
+            catch (Exception ex)
+            {
                 MessageBox.Show("Erro " + ex.Message, "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
